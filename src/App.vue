@@ -6,6 +6,9 @@
 </template>
 
 <style lang="scss">
+* {
+  cursor: pointer;
+}
 html,
 body,
 p,
