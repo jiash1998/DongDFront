@@ -10,6 +10,12 @@
   cursor: pointer;
 }
 html,
+body {
+  min-width: 1600px;
+  min-width: 1200px;
+  min-height: 100vh;
+}
+html,
 body,
 p,
 h1,
