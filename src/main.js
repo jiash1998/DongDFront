@@ -17,9 +17,13 @@ import qs from "querystring";
 import axios from "axios"; //axios
 import VueAxios from "vue-axios"; //axios
 
+//
+import apiConfig from "../api.config";
+
 
 Vue.use(ElementUI);
 Vue.use(VueAxios, axios);
+axios.defaults.baseURL = apiConfig.baseUrl;
 
 Vue.config.productionTip = false
 

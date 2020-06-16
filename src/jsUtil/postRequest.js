@@ -1,5 +1,5 @@
 import qs from "querystring";
-import interceptors from "./interceptors.js";
+import interceptor from "./interceptors.js";
 
 const headersAll = "application/x-www-form-urlencoded";
 const headersJson = "application/json";
@@ -37,8 +37,11 @@ var postStringJson = (urlSelf, methodSelf, dataSelf, headerSelf) => {
 };
 
 export default {
-  //用户注册
+  //测试接口
   insertUser(data) {
-    return interceptor(postString("/insertUser", methodsAll, data, headersAll));
+    return interceptor(
+      postString("/apis/getData", methodsAll, data, headersAll)
+    );
   },
 };
+
