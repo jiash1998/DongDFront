@@ -1,0 +1,23 @@
+#sign {
+  .sign-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    // background-color: #fafafa;
+    background-image: url("../assets/images/science2.png");
+    background-repeat: repeat-x;
+    background-size: 150px;
+    background-position: 30% 32%;
+
+    .body-item{
+        // border: 1px solid #000;
+
+        .el-form{
+            .el-button{
+                width: 100%;
+            }
+        }
+    }
+  }
+}

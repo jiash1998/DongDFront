@@ -1,0 +1,28 @@
+#register {
+  .register-body {
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+        background-image: url("../assets/images/science2.png");
+    background-repeat: repeat-x;
+    background-size: 150px;
+    background-position: 30% 32%;
+    .el-card {
+      width: 40%;
+
+      .el-form {
+        .el-form-item {
+        //   background-color: pink;
+          margin: 20px auto;
+          width: 60%;
+          .el-button {
+            width: 45%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+#publicHead {
+  .head {
+    height: 60px;
+    background-color: pink;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    border-bottom: 2px solid #fafafa;
+    box-shadow: 3px 0 3px gainsboro;
+    .head-logo {
+      display: flex;
+      align-items: center;
+
+      #logo-img {
+        height: 40px;
+        margin: 0 15px 0 50px;
+      }
+
+    //   #logo-p2 { }
+    }
+
+    .head-reg{
+        margin-right: 50px;
+    }
+  }
+}
