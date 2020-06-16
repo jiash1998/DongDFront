@@ -92,16 +92,112 @@
         </div>
       </div>
     </div>
+    <!-- fill -->
+    <div class="fill"></div>
     <!-- 主体展示2 -->
-    <div class="other"></div>
+    <div class="advantage">
+      <div class="advantage-title">
+        <p class="title-p1 add">在咚咚</p>
+        <P class="title-p2 add">工作简单高效更安全</P>
+      </div>
+      <div class="advantage-cont">
+        <div class="cont-item" v-for="(item, index) in advantage" :key="index">
+          <img :src="item.url" class="cont-img" />
+          <p class="cont-p1">{{item.title}}</p>
+          <p class="cont-p2">{{item.detail}}</p>
+        </div>
+      </div>
+    </div>
     <!-- 主体展示3 -->
-    <div class="advantage"></div>
+    <div class="other">
+      <div class="other-body">
+        <p id="body-p">Dong D</p>
+        <span id="body-span">咚一下</span>
+        <img id="body-img" src="../assets/images/science2.png" />
+      </div>
+      <div class="other-foot">
+        <ElButton type="primary" plain>立即注册</ElButton>
+      </div>
+    </div>
+    <!-- 成功案例 -->
+    <div class="success-example">
+      <h1 id="example-h1">客户案例</h1>
+    </div>
+    <div class="success">
+      <div class="success-body" v-for="(item, index) in success" :key="index">
+        <img id="body-img" :src="item.url" />
+        <p class="body-p1 public-add">
+          {{item.type}}
+          <b>|</b>
+          {{item.name}}
+        </p>
+        <p class="body-p2 public-add">{{item.detail1}}</p>
+        <p class="body-p3 public-add">{{item.detail2}}</p>
+      </div>
+    </div>
+    <!-- fill -->
+    <div class="fill"></div>
+    <public-foot></public-foot>
   </div>
 </template>
 
 <script>
+import publicFoot from "../components/publicFoot";
 export default {
-  name: "Home"
+  name: "Home",
+  components: {
+    publicFoot
+  },
+  data() {
+    return {
+      advantage: [
+        {
+          url: require("../assets/images/organ.png"),
+          title: "组织关系更加在线化",
+          detail:
+            "安全可靠的组织通讯录，快速找到同事，实现组织架构扁平化、可视化"
+        },
+        {
+          url: require("../assets/images/efficiency.png"),
+          title: "提高组织沟通效率",
+          detail:
+            "组织沟通更加高效便捷，实现使命必达，激发组织中个体的创造创新力"
+        },
+        {
+          url: require("../assets/images/digital.png"),
+          title: "业务流程数字化",
+          detail:
+            "助力组织的业务流程数字化/在线化支撑组织协同高效运转，加速组织变革"
+        }
+      ],
+      success: [
+        {
+          url: require("../assets/images/JML.png"),
+          type: "食品/饮料",
+          name: "今麦郎饮品股份有限公司",
+          detail1: "传统信息化的智能转型之路",
+          detail2:
+            "今麦郎饮品股份有限公司全面启用咚咚，极大提升了业务流转的效率，助力传统信息化向智能信息化发展。"
+        },
+        {
+          url: require("../assets/images/SX.png"),
+          type: "纺织业",
+          name: "上海水星家纺",
+          detail1: "咚咚让思维和观念的改变变成习惯",
+          detail2:
+            "借助咚咚这样互联网化的交流工具，办公体系实现透明化、轻娱化，每一位水星人更有参与感、互动感！"
+        },
+        {
+          url: require("../assets/images/YD.png"),
+          type: "食品/饮料",
+          name: "今麦郎饮品股份有限公司",
+          detail1: "环保节能的办公方式",
+          detail2:
+            "远大科技集团一直提倡节能、环保理念，并在所生产产品中贯彻执行这个理念。咚咚提供的绿色环保办公方式，正好契合远大的目标，是适合远大的办公方式。"
+        }
+      ]
+    };
+  }
 };
 </script>
 
