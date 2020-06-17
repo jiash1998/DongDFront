@@ -1,0 +1,30 @@
+$baseHeight:70vh;
+
+#clockManage {
+  width: 100%;
+  .clock-body {
+    width: 85%;
+    min-height: $baseHeight;
+    margin: 0 auto;
+    background-color: #fff;
+    display: flex;
+
+    .body-left {
+      width: 260px;
+      height: $baseHeight;
+      background-color: #f4f6f8;
+
+      .el-menu{
+          .el-menu-item{
+              background-color: #fff;
+          }
+      }
+    }
+
+    .body-right {
+      width: calc(100% - 260px);
+      height: $baseHeight;
+      background-color: #fff;
+    }
+  }
+}

@@ -20,7 +20,9 @@
           <el-menu-item index="3">
             <router-link to="/controlUser/leave" tag="div">请假</router-link>
           </el-menu-item>
-          <el-menu-item index="4">设置</el-menu-item>
+          <el-menu-item index="4">
+            <router-link to="/controlUser/leave" tag="div">设置</router-link>
+          </el-menu-item>
         </el-menu>
       </div>
       <div class="head-item3">

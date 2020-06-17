@@ -1,0 +1,31 @@
+#clockDaily {
+  .daily-body {
+    width: 96%;
+    height: 65vh;
+    margin: 2.5vh auto;
+    background-color: pink;
+    background-color: #fff;
+
+    .body-title {
+      height: 45px;
+      // background-color: gray;
+      position: relative;
+
+      #title-h3 {
+        display: inline;
+        line-height: 45px;
+      }
+      #title-img {
+        height: 26px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 10px;
+      }
+    }
+    .body-item1 {
+      height: calc(100% - 45px);
+      background-color: pink;
+    }
+  }
+}

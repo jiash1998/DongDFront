@@ -53,7 +53,7 @@ export default {
       selForm: {
         organName: ""
       },
-      orgFlag:false
+      orgFlag:true
     };
   }
 };

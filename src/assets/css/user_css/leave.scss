@@ -1,8 +1,40 @@
-#leave{
-    width: 100%;
-    .el-card{
-        width: 80%;
-        height: 70vh;
-        margin: 0 auto;
+#leave {
+  width: 100%;
+  .el-card {
+    width: 60%;
+    min-height: 80vh;
+    margin: 0 auto;
+
+    .el-form {
+      width: 80%;
+      margin: 10px auto 0;
+
+      .el-button {
+        width: 100%;
+        margin-top: 20px;
+      }
     }
+
+    .leave-flag {
+      height: 100px;
+      width: 80%;
+      margin: 0 auto;
+      //   background-color: pink;
+
+      #flag-p {
+        font-size: 0.9em;
+
+        &::after {
+          content: "*";
+          color: red;
+        }
+      }
+
+      ul li {
+        font-size: 0.8em;
+        color: gray;
+        margin: 15px 0 -10px;
+      }
+    }
+  }
 }

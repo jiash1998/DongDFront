@@ -16,8 +16,10 @@ import controlAdmin from "../views/controlAdmin.vue";
 //用户
 import controlUser from "../views/controlUser.vue";
 import organManage from "../views/userControl/organManage.vue";
-import clockManage from "../views/userControl/clockManage.vue";
 import leave from "../views/userControl/leave.vue";
+import clockManage from "../views/userControl/clockManage.vue";
+import clockDaily from "../views/userControl/clockitem/clockDaily.vue";
+import clockHistory from "../views/userControl/clockitem/clockHist.vue";
 
 Vue.use(VueRouter);
 
@@ -86,6 +88,22 @@ const routes = [
         path: "/controlUser/clockManage",
         name: "clockManage",
         component: clockManage,
+        children: [
+          {
+            path: "/controlUser/clockManage/",
+            redirect: "/controlUser/clockManage/clockDaily",
+          },
+          {
+            path: "/controlUser/clockManage/clockDaily",
+            name: "clockDaily",
+            component: clockDaily,
+          },
+          {
+            path: "/controlUser/clockManage/clockHistory",
+            name: "clockHistory",
+            component: clockHistory,
+          },
+        ],
       },
       {
         path: "/controlUser/leave",
