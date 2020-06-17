@@ -1,0 +1,97 @@
+$baseColor: #0089ff;
+$baseHeight: 70vh;
+
+#organManage {
+  width: 100%;
+
+  .organ-body {
+    display: flex;
+    margin: 0 auto;
+    width: 85%;
+    height: $baseHeight;
+    background-color: pink;
+
+    .body-left {
+      width: 260px;
+      height: $baseHeight;
+      background-color: #f4f6f8;
+
+      .left-item1 {
+        .el-form {
+          width: 80%;
+          margin: 25px auto;
+          //   background-color: gray;
+        }
+      }
+
+      .left-item2 {
+        width: 80%;
+        height: 30px;
+        margin: 0 auto;
+        background-color: $baseColor;
+        border-radius: 50px;
+        #item2-p {
+          color: #fff;
+          font-size: 0.9em;
+          text-align: center;
+          line-height: 30px;
+        }
+      }
+    }
+
+    .body-right {
+      width: calc(100% - 260px);
+      height: $baseHeight;
+      background-color: #fff;
+      position: relative;
+
+      //没组织时
+      .right-item-null {
+        width: 60%;
+        margin: 0 auto;
+        //   background-color: pink;
+        text-align: center;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        #orgFlag-img {
+          width: 130px;
+        }
+
+        #orgFlag-p {
+          font-size: 0.9em;
+          margin: 10px 0 0;
+        }
+      }
+
+      //有组织时
+      .right-item {
+        width: 90%;
+        margin: 0 auto;
+        background-color: pink;
+        overflow: hidden;
+
+        .public-add{
+            // background-color: $baseColor;
+            // color: #fff;
+            display: inline-block;
+            font-size: 1.1em;
+            // border-radius: 20px;
+            // padding: 5px 30px;
+        }
+        .item-title {
+          #title-p1 {
+            font-size: 1.3em;
+            margin: 20px 0;
+          }
+        }
+
+        .item-cont1{
+            
+        }
+      }
+    }
+  }
+}
