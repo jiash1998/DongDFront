@@ -54,6 +54,9 @@ export default {
       // let data = this.signForm;
       let data = this.signForm;
       console.log(data);
+      this.$router.push({path:"/controlUser"})
+      // const newWin = this.$router.resolve({ name: "controlUser" });
+      // window.open(newWin.href, "_blank");
       // postApi
       //   .signin(data)
       //   .then(res => {

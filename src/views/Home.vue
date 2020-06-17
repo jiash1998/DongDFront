@@ -14,10 +14,8 @@
         <router-link to="/Home/About" id="cont-help" tag="p">关于我们</router-link>
       </div>
       <div class="navbar-manage">
-        <router-link to="/Register">
-          <ElButton type="primary" plain round>注 册</ElButton>
-        </router-link>
-        <router-link to="/Sign" id="manage-sign" tag="p">登录</router-link>
+        <ElButton type="primary" @click="toNew('Register')" plain round>注 册</ElButton>
+        <p id="manage-sign" @click="toNew('Sign')">登录</p>
       </div>
     </div>
     <router-view />
@@ -32,6 +30,13 @@ export default {
   name: "Home",
   components: {
     publicFoot
+  },
+  methods: {
+    //注册
+    toNew(url) {
+      const newUrl = this.$router.resolve({ name: url });
+      window.open(newUrl.href, "_blank");
+    }
   }
 };
 </script>

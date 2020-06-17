@@ -1,0 +1,46 @@
+$baseColor: #0089ff;
+#controlUser {
+  .user-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 1px 3px gainsboro;
+    background-color: #fff;
+    // background-color: pink;
+
+    .head-item1 {
+      display: flex;
+      align-items: center;
+      margin: 0 50px;
+
+      #logo {
+        height: 40px;
+      }
+
+      #title {
+        font-size: 1em;
+        color: $baseColor;
+        margin: 0 10px 0;
+      }
+    }
+
+    .head-item2 {
+      .el-menu {
+        .el-menu-item {
+          padding: 0 70px 0;
+        }
+      }
+    }
+
+    .head-item3 {
+        .el-button{
+            margin: 0 20px 0;
+        }
+    }
+  }
+
+  .user-body {
+      height: 80vh;
+      background-color: #fafafa;
+  }
+}
