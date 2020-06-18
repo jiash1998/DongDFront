@@ -26,13 +26,16 @@
         </el-menu>
       </div>
       <div class="head-item3">
+        <div class="item3-name">
+          <p>甲生_Jst</p>
+        </div>
         <el-button type="primary" size="mini" plain>
-            <router-link tag="p" to="/Sign">退出</router-link>
+          <router-link tag="p" to="/Sign">退出</router-link>
         </el-button>
       </div>
     </div>
     <div class="user-body">
-        <router-view/>
+      <router-view />
     </div>
     <public-foot></public-foot>
   </div>

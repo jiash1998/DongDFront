@@ -5,7 +5,7 @@ $baseColor: #0089ff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
     background-color: #fff;
     // background-color: pink;
@@ -27,15 +27,31 @@ $baseColor: #0089ff;
 
     .head-item2 {
       .el-menu {
-        .el-menu-item div{
+        .el-menu-item div {
           padding: 0 60px 0;
         }
       }
     }
 
     .head-item3 {
+      display: flex;
+      align-items: center;
+      // background-color: gray;
+      .item3-name {
+        display: inline;
+
+        p {
+          margin: 0 -10px 0 0px;
+          font-size: 0.85em;
+          width: 70px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
       .el-button {
-        margin: 0 20px 0;
+        margin: 0 10px 0;
       }
     }
   }

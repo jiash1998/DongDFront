@@ -44,7 +44,7 @@ $baseHeight: 70vh;
       height: $baseHeight;
       background-color: #fff;
       position: relative;
-
+      transition: .4s;
       //没组织时
       .right-item-null {
         width: 60%;
@@ -124,7 +124,7 @@ $baseHeight: 70vh;
           .foot-oper {
             display: flex;
             .el-button{
-              margin: 10px 10px 0 0;
+              margin: 15px 10px 0 0;
             }
           }
         }

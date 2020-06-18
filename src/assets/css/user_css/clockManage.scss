@@ -11,7 +11,7 @@ $baseHeight:70vh;
 
     .body-left {
       width: 260px;
-      height: $baseHeight;
+      min-height: $baseHeight;
       background-color: #f4f6f8;
 
       .el-menu{
@@ -22,8 +22,8 @@ $baseHeight:70vh;
     }
 
     .body-right {
-      width: calc(100% - 260px);
-      height: $baseHeight;
+      min-width: calc(100% - 260px);
+      min-height: $baseHeight;
       background-color: #fff;
     }
   }

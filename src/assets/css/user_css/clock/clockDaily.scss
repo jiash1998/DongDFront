@@ -26,6 +26,10 @@
     .body-item1 {
       height: calc(100% - 45px);
       background-color: pink;
+      
+      table,tr,td,th{
+        border: 1px solid gray;
+      }
     }
   }
 }
