@@ -12,6 +12,10 @@ import Register from "../views/Register.vue";
 
 //管理员
 import controlAdmin from "../views/controlAdmin.vue";
+import adminOrgan from "../views/adminControl/adminOrgan.vue";
+import adminClock from "../views/adminControl/adminClock.vue";
+import adminLeave from "../views/adminControl/adminLeave.vue";
+
 
 //用户
 import controlUser from "../views/controlUser.vue";
@@ -117,7 +121,27 @@ const routes = [
     path: "/controlAdmin",
     name: "controlAdmin",
     component: controlAdmin,
-    children: [],
+    children: [
+      {
+        path: "/controlAdmin",
+        redirect: "/controlAdmin/adminOrgan",
+      },
+      {
+        path: "/controlAdmin/adminOrgan",
+        name: "adminOrgan",
+        component: adminOrgan,
+      },
+      {
+        path: "/controlAdmin/adminClock",
+        name: "adminClock",
+        component: adminClock,
+      },
+      {
+        path: "/controlAdmin/adminLeave",
+        name: "adminLeave",
+        component: adminLeave,
+      },
+    ],
   },
 ];
 

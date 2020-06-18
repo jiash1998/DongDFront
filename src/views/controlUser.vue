@@ -7,15 +7,11 @@
       </div>
       <div class="head-item2">
         <el-menu default-active="1" mode="horizontal">
-          <!-- <el-submenu index="1">
-        <template slot="title">打卡</template>
-        <el-menu-item index="1-1">测试1</el-menu-item>
-          </el-submenu>-->
           <el-menu-item index="1">
             <router-link to="/controlUser/organManage" tag="div">所在组织</router-link>
           </el-menu-item>
           <el-menu-item index="2">
-            <router-link to="/controlUser/clockManage" tag="div">考勤事务</router-link>
+            <router-link to="/controlUser/clockManage" tag="div">我的考勤</router-link>
           </el-menu-item>
           <el-menu-item index="3">
             <router-link to="/controlUser/leave" tag="div">请假</router-link>
@@ -52,5 +48,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/css/user_css/controlUser.scss";
+@import "../assets/css/controlUser.scss";
 </style>

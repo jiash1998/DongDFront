@@ -1,0 +1,72 @@
+$baseColor: #0089ff;
+#controlAdmin {
+  width: 100%;
+  .user-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    // background-color: pink;
+
+    .head-item1 {
+      display: flex;
+      align-items: center;
+
+      #logo {
+        height: 40px;
+      }
+
+      #title {
+        font-size: 1em;
+        color: $baseColor;
+        margin: 0 10px 0;
+      }
+    }
+
+    .head-item2 {
+      .el-menu {
+        .el-menu-item div {
+          padding: 0 50px 0;
+        }
+      }
+    }
+
+    .head-item3 {
+      display: flex;
+      align-items: center;
+      // background-color: gray;
+      .item3-name {
+        display: inline;
+
+        p {
+          margin: 0 -10px 0 0px;
+          font-size: 0.85em;
+          width: 70px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .el-button {
+        margin: 0 10px 0;
+      }
+    }
+  }
+
+  .user-body {
+    min-height: 80vh;
+    padding: 30px 0;
+    background-color: #e7e8eb;
+    display: flex;
+    //   justify-content: center;
+    align-items: center;
+
+    // background-image: url("../assets/images/science2.png");
+    // background-repeat: repeat-x;
+    // background-size: 150px;
+    // background-position: 30% 45%;
+  }
+}
