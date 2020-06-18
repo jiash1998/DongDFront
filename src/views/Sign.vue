@@ -16,7 +16,7 @@
               <ElInput v-model="signForm.password" show-password placeholder="请输入密码"></ElInput>
             </ElFormItem>
             <ElFormItem>
-              <ElButton type="primary" @click="signin" plain>登录</ElButton>
+              <ElButton type="primary" :plain="isOk" :disabled="isOk" @click="signin">登录</ElButton>
             </ElFormItem>
           </ElForm>
         </el-card>
@@ -45,8 +45,21 @@ export default {
         username: "",
         password: ""
       },
-      urlName: "/Register"
+      urlName: "/Register",
+      isOk: true,
     };
+  },
+  watch: {
+    signForm: {
+      handler(val) {
+        if (val.username !== "" && val.password !== "") {
+          this.isOk = false;
+          return;
+        }
+        this.isOk = true;
+      },
+      deep: true
+    }
   },
   methods: {
     //登录提交
@@ -54,7 +67,7 @@ export default {
       // let data = this.signForm;
       let data = this.signForm;
       console.log(data);
-      this.$router.push({path:"/controlUser"})
+      this.$router.push({ path: "/controlUser" });
       // const newWin = this.$router.resolve({ name: "controlUser" });
       // window.open(newWin.href, "_blank");
       // postApi

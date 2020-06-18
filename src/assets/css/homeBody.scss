@@ -6,7 +6,6 @@ $baseColor: #0089ff;
   // min-height: 100vh;
   background-color: #fff;
 
-
   //模块1
   //圆角
   .borderRadius {
@@ -231,12 +230,16 @@ $baseColor: #0089ff;
     height: 260px;
     background-color: #fff;
     // background-color: pink;
+    background-image: url("../assets/images/mainBack.png");
+    background-repeat: repeat;
+    // background-size: 150px;
+    background-position: 30% 45%;
 
     display: flex;
     align-items: center;
     flex-direction: column;
     .other-body {
-      width: 70%;
+      // width: 70%;
       height: 180px;
       background-color: #fff;
       text-align: center;
@@ -277,7 +280,7 @@ $baseColor: #0089ff;
     background-color: #fff;
     // background-color: pink;
 
-    #example-h1{
+    #example-h1 {
       text-align: center;
       line-height: 100px;
     }
@@ -297,8 +300,8 @@ $baseColor: #0089ff;
       border-radius: 5px;
       padding: 0 0 40px;
       background-color: #fafafa;
-      transition: .4s ease-in-out;
-      &:hover{
+      transition: 0.4s ease-in-out;
+      &:hover {
         box-shadow: 0 5px 10px gainsboro;
         background-color: #fff;
       }
@@ -318,8 +321,8 @@ $baseColor: #0089ff;
         font-size: 1.5em;
       }
       .body-p3 {
-        font-size: .9em;
-        color:gray;
+        font-size: 0.9em;
+        color: gray;
       }
     }
   }
