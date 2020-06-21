@@ -32,7 +32,7 @@
               >{{activity.content}}</el-timeline-item>
             </el-timeline>
           </div>
-          <div class="yes-clock">
+          <div :class="[clockNum >= 2?'yes-clock-ban':'yes-clock']">
             <div class="clock" @click="clock_down">
               <p id="clock-p">{{clockDown}}</p>
             </div>
@@ -50,47 +50,61 @@
 </template>
 
 <script>
+//时间转转换字符串
+import times from "../../../jsUtil/getTimes.js";
 export default {
   name: "clockDaily",
   data() {
     return {
-      isClock: false,
+      //切换打卡状态,需要放入sessionStorage
+      isClock: true,
+      //打卡所需数据
       clockUp: "上班打卡",
+      clockWait: "下班前请再次打卡",
       clockDown: "下班打卡",
-      activities: [
-        {
-          content: "上班打卡",
-          timestamp: "2018-04-12 20:46",
-          icon: "el-icon-circle-check",
-          color: "#0bbd87",
-          size: "larger"
-        },
-        {
-          content: "下班打卡",
-          timestamp: "2018-04-03 20:46",
-          icon: "el-icon-circle-close",
-          color: "#e74c3c",
-          size: "larger"
-        }
-      ],
-
+      iconCheck: "el-icon-circle-check",
+      iconWait: "el-icon-loading",
+      iconClose: "el-icon-circle-close",
+      colorSuc: "#0bbd87",
+      colorError: "#e74c3c",
+      colorWait: "#f39c12",
+      //打卡计数
+      clockNum: 0,
+      //时间线展示数组
+      activities: []
     };
   },
   methods: {
     clock_up() {
-      console.log("up");
+      
       this.isClock = false;
-      console.log(new Date());
+      this.clockNum++;
+      this.pushActivity(this.clockUp, this.iconCheck, this.colorSuc);
+      this.pushActivity(this.clockWait, this.iconWait, this.colorWait);
+      console.log(times.calcTimes());
     },
     clock_down() {
-      console.log("down");
       this.isClock = false;
-      console.log(new Date().getUTCFullYear());
-      console.log(new Date().getUTCMonth());
-      console.log(new Date().getDate());
-      console.log(new Date().getHours());
-      console.log(new Date().getUTCMinutes());
-      this.clockDown = "打卡结束";
+      this.clockNum++;
+
+      if (this.clockNum > 2) {
+        console.log("别点了！！！");
+      } else {
+        this.activities.pop();
+        this.clockDown = "打卡结束";
+        this.pushActivity(this.clockDown, this.iconClose, this.colorError);
+      }
+    },
+    //时间线操作
+    pushActivity(text, icon, color) {
+      let obj = {
+        content: text,
+        timestamp: times.calcTimes(),
+        icon: icon,
+        color: color,
+        size: "larger"
+      };
+      this.activities.push(obj);
     }
   }
 };
