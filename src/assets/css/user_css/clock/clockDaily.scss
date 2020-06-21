@@ -26,9 +26,24 @@
     .body-item1 {
       height: calc(100% - 45px);
       background-color: pink;
-      
-      table,tr,td,th{
-        border: 1px solid gray;
+      background-color: #fff;
+      position: relative;
+
+      .clock {
+        width: 20vh;
+        height: 20vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+
+        p {
+          text-align: center;
+          line-height: 20vh;
+          color: #fff;
+        }
       }
     }
   }

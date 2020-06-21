@@ -1,0 +1,40 @@
+$baseHeight:70vh;
+
+#adminOrgan{
+    width: 100%;
+    // 没创建组织时
+    .organ-no{
+        width: 60%;
+        margin: 0 auto;
+
+        .el-form{
+            width: 60%;
+            margin: 0 auto;
+            .el-button{
+                width: 100%;
+            }
+        }
+    }
+
+    //创建组织后
+    .organ-yes{
+        width: 80%;
+        min-height: $baseHeight;
+        border-radius: 5px;
+        margin: 0 auto;
+        background-color: #fff;
+        display: flex;
+        .yes-left{
+            width: 260px;
+            height: $baseHeight;
+            border-radius: 5px 0 0px 5px;
+            background-color: #f4f6f8;
+        }
+
+        .yes-right {
+            width: calc(100% - 260px);
+            height: $baseHeight;
+            background-color: #fff;
+        }
+    }
+}

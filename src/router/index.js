@@ -13,6 +13,10 @@ import Register from "../views/Register.vue";
 //管理员
 import controlAdmin from "../views/controlAdmin.vue";
 import adminOrgan from "../views/adminControl/adminOrgan.vue";
+import itemBase from "../views/adminControl/organItem/itemBase.vue";
+import itemArch from "../views/adminControl/organItem/itemArch.vue";
+import itemMore from "../views/adminControl/organItem/itemMore.vue";
+
 import adminClock from "../views/adminControl/adminClock.vue";
 import adminLeave from "../views/adminControl/adminLeave.vue";
 
@@ -130,6 +134,27 @@ const routes = [
         path: "/controlAdmin/adminOrgan",
         name: "adminOrgan",
         component: adminOrgan,
+        children: [
+          {
+            path:"/controlAdmin/adminOrgan",
+            redirect: "/controlAdmin/adminOrgan/itemBase"
+          },
+          {
+            path: "/controlAdmin/adminOrgan/itemBase",
+            name: "itemBase",
+            component: itemBase,
+          },
+          {
+            path: "/controlAdmin/adminOrgan/itemArch",
+            name: "itemArch",
+            component: itemArch,
+          },
+          {
+            path: "/controlAdmin/adminOrgan/itemMore",
+            name: "itemMore",
+            component: itemMore,
+          },
+        ],
       },
       {
         path: "/controlAdmin/adminClock",
