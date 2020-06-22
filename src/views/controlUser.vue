@@ -37,6 +37,8 @@
 
 <script>
 import publicFoot from "../components/publicFoot";
+import manageSession from '../jsUtil/manageSession.js';
+
 export default {
   name: "controlUser",
   components: {

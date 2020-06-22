@@ -38,6 +38,7 @@
 <script>
 import publicHead from "../components/publicHead";
 import publicFoot from "../components/publicFoot";
+import postApi from "../jsUtil/postRequest.js";
 export default {
   name: "register",
   components: {
@@ -51,14 +52,34 @@ export default {
         password: "",
         phone: "",
         admin: "",
-        organ: "none"
+        organName: "none",
+        organCode: "none"
       },
       url: "/Sign"
     };
   },
   methods: {
     toReg() {
-      console.log(this.regForm);
+      let data = this.regForm;
+      console.log(data);
+       this.$router.push({ path: "/Sign" });
+      postApi
+        .register(data)
+        .then(res => {
+          console.log(res.data);
+          if (res.data) {
+            this.$router.push({ path: "/Sign" });
+          } else {
+            this.$message({
+              message: "注册失败",
+              type: "error",
+              duration: 2000
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

@@ -46,11 +46,13 @@ export default {
   //公共模块
   //登录接口
   signin(data) {
-    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+    return interceptor(postString("/apis/signin", methodsAll, data, headersAll));
   },
   //注册接口
   register(data) {
-    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+    return interceptor(
+      postString("/apis/register", methodsAll, data, headersAll)
+    );
   },
   //管理员模块
   //创建组织

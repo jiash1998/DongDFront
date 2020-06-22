@@ -70,7 +70,7 @@
               <p class="public-add-p1">具体操作</p>
             </div>
             <div class="foot-oper">
-              <el-button type="primary" size="mini">加入组织</el-button>
+              <el-button type="primary" size="mini" @click="addOrgan">加入组织</el-button>
               <el-button type="danger" size="mini" plain>退出组织</el-button>
             </div>
           </div>
@@ -82,6 +82,7 @@
 
 <script>
 import getAllOrganApi from "../../jsUtil/getRequest.js";
+import postApi from "../../jsUtil/postRequest.js";
 export default {
   name: "organManage",
   data() {
@@ -117,6 +118,28 @@ export default {
     //   .catch(err => {
     //     console.log(err);
     //   });
+  },
+  methods: {
+    //加入组织
+    addOrgan() {
+      let data = this.selForm.organName;
+      // let obj = { username: JSON.parse(sessionStorage.getItem("userInfo")) };
+      // console.log(data);
+      // for (const i of this.organArr) {
+      //   if (i.organName == data) {
+      //     obj.organName = i.organName;
+      //     obj.organCode = i.organCode;
+      //   }
+      // }
+      // postApi
+      //   .addOrgan(obj)
+      //   .then(res => {
+      //     console.log(res.data);
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
+    }
   }
 };
 </script>

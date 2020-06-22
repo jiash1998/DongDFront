@@ -33,7 +33,8 @@ import publicFoot from "../components/publicFoot";
 import manageSession from "../jsUtil/manageSession.js";
 //引入接口
 import postApi from "../jsUtil/postRequest.js";
-import signinApi from "../jsUtil/getRequest.js";
+import qs from "querystring";
+// import signinApi from "../jsUtil/getRequest.js";
 
 export default {
   name: "sign",
@@ -71,13 +72,16 @@ export default {
     signin() {
       // let data = this.signForm;
       let data = this.signForm;
-      manageSession.setSession("adminInfo", data);
-      this.$router.push({
-        path: "/controlAdmin"
-      });
-      //接口
-      // signinApi
-      //   .signin(data)
+      // manageSession.setSession("adminInfo", data);
+      // this.$router.push({
+      //   path: "/controlAdmin"
+      // });
+      // this.axios
+      //   .post("http://localhost:8080/apis/signin", qs.stringify(data), {
+      //     headers: {
+      //       "Content-Type": "application/x-www-form-urlencoded"
+      //     }
+      //   })
       //   .then(res => {
       //     //登录接口发送成功后
       //     console.log(res.data);
@@ -87,7 +91,7 @@ export default {
       //       if (info.admin == "true") {
       //         //session保存s管理员信息
       //         manageSession.setSession("adminInfo", info);
-      //         this.$router.push({ path: "/controlAdmin", });
+      //         this.$router.push({ path: "/controlAdmin" });
       //       } else {
       //         //session保存员工信息
       //         manageSession.setSession("userInfo", info);
@@ -104,6 +108,35 @@ export default {
       //   .catch(err => {
       //     console.log(err);
       //   });
+      //接口
+      postApi
+        .signin(data)
+        .then(res => {
+          //登录接口发送成功后
+          console.log(res.data);
+          let info = res.data;
+          //根据返回信息判断
+          if (info) {
+            if (info.admin == "true") {
+              //session保存s管理员信息
+              manageSession.setSession("adminInfo", info);
+              this.$router.push({ path: "/controlAdmin" });
+            } else {
+              //session保存员工信息
+              manageSession.setSession("userInfo", info);
+              this.$router.push({ path: "/controlUser" });
+            }
+          } else {
+            this.$message({
+              message: "验证失败，重新登陆",
+              type: "error",
+              duration: 2000
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

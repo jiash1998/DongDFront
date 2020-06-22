@@ -52,7 +52,7 @@ service.interceptors.response.use(
     // 请求报错的情况下, http请求异常，不是数据异常，是系统异常
     Message({
       type: "error",
-      message: "响应出错1",
+      message: "响应出错",
     });
     return Promise.reject(error);
   }
