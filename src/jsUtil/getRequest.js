@@ -22,5 +22,11 @@ export default {
   getData() {
     return interceptor(getString("/apis/getAll", methodAll));
   },
-};
+  //管理员模块
 
+  //用户模块
+  //获取所有组织
+  getAllOrgan() {
+    return interceptor(getString("/apis/***", methodAll));
+  },
+};

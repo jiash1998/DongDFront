@@ -44,6 +44,8 @@ $baseColor: #0089ff;
     overflow: hidden;
     display: flex;
     justify-content: space-evenly;
+    // justify-content: space-around;
+    
 
     .display-top {
       width: 70%;
@@ -56,6 +58,7 @@ $baseColor: #0089ff;
       align-content: space-around;
 
       .top-module1 {
+
         width: 100%;
         height: 230px;
         background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);

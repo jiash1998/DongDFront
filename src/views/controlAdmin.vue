@@ -25,9 +25,7 @@
         <div class="item3-name">
           <p>甲生_Jst</p>
         </div>
-        <el-button type="primary" size="mini" plain>
-          <router-link tag="p" to="/Sign">退出</router-link>
-        </el-button>
+        <el-button type="primary" size="mini" @click="exit" plain>退出</el-button>
       </div>
     </div>
     <div class="user-body">
@@ -39,12 +37,19 @@
 
 <script>
 import publicFoot from "../components/publicFoot";
+import manageSession from '../jsUtil/manageSession.js';
 
 export default {
   name: "controlAdmin",
   components: {
     publicFoot
-  }
+  },
+  methods: {
+    exit(){
+      manageSession.removeSession("adminInfo");
+      this.$router.push("/Sign");
+    }
+  },
 };
 </script>
 

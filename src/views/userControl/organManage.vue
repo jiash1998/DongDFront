@@ -12,6 +12,23 @@
         <div class="left-item2">
           <p id="item2-p">组织架构</p>
         </div>
+        <!-- 搜索结果 无 -->
+        <div class="left-item3-no" v-if="orgFlag">
+          <img src="../../assets/images/orgNull2.png" />
+        </div>
+        <!-- 搜索结果 有 -->
+        <div class="left-item3-yes">
+          <h1>123</h1>
+          <h1>123</h1>
+          <h1>123</h1>
+          <h1>123</h1>
+          <h1>123</h1>
+          <h1>123</h1>
+          <h1>123</h1>
+          <h1>123</h1>
+          <h1>123</h1>
+          <h1>123</h1>
+        </div>
       </div>
       <div class="body-right">
         <!-- 无组织时 -->
@@ -43,7 +60,7 @@
               <p class="public-add-p1">管理人员</p>
             </div>
             <div class="cont2-oper" style="padding:10px 0;">
-              <p class="public-add-p2" >管理人员：顾乐</p>
+              <p class="public-add-p2">管理人员：顾乐</p>
               <p class="public-add-p2">联系方式：17856006144</p>
             </div>
           </div>
@@ -52,10 +69,10 @@
               <img class="item-img" src="../../assets/images/operate.png" />
               <p class="public-add-p1">具体操作</p>
             </div>
-           <div class="foot-oper">
+            <div class="foot-oper">
               <el-button type="primary" size="mini">加入组织</el-button>
-            <el-button type="danger" size="mini" plain>退出组织</el-button>
-           </div>
+              <el-button type="danger" size="mini" plain>退出组织</el-button>
+            </div>
           </div>
         </div>
       </div>
@@ -64,6 +81,7 @@
 </template>
 
 <script>
+import getAllOrganApi from "../../jsUtil/getRequest.js";
 export default {
   name: "organManage",
   data() {
@@ -71,8 +89,34 @@ export default {
       selForm: {
         organName: ""
       },
-      orgFlag: false
+      //切换状态
+      orgFlag: false,
+      organArr: [
+        {
+          organName: "滁州市1231231231"
+        },
+        {
+          organName: "滁州市zczxcxzcz"
+        },
+        {
+          organName: "adas滁州市1231231231"
+        }
+      ]
     };
+  },
+  created() {
+    //加载页面时获取所有商家
+    // getAllOrganApi
+    //   .getAllOrgan()
+    //   .then(res => {
+    //     console.log(res);
+    //     for (const i of res.data) {
+    //         this.organArr.push(i);
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   }
 };
 </script>

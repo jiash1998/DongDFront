@@ -43,5 +43,31 @@ export default {
       postString("/apis/getData", methodsAll, data, headersAll)
     );
   },
+  //公共模块
+  //登录接口
+  signin(data) {
+    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+  },
+  //注册接口
+  register(data) {
+    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+  },
+  //管理员模块
+  //创建组织
+  createOrgan(data) {
+    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+  },
+  //获取组织
+  getOrgan(data) {
+    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+  },
+  //用户模块
+  //加入组织
+  addOrgan(data) {
+    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+  },
+  //每日打卡
+  clockin(data) {
+    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+  },
 };
-

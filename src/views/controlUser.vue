@@ -23,11 +23,9 @@
       </div>
       <div class="head-item3">
         <div class="item3-name">
-          <p>甲生_Jst</p>
+          <p>{{username}}</p>
         </div>
-        <el-button type="primary" size="mini" plain>
-          <router-link tag="p" to="/Sign">退出</router-link>
-        </el-button>
+        <el-button type="primary" @click="exit" size="mini" plain>退出</el-button>
       </div>
     </div>
     <div class="user-body">
@@ -43,6 +41,21 @@ export default {
   name: "controlUser",
   components: {
     publicFoot
+  },
+  data() {
+    return {
+      //用户名
+      username: "甲生_Jst"
+    };
+  },
+  created() {
+    // this.username = JSON.parse(sessionStorage.getItem("userInfo")).username;
+  },
+  methods: {
+    exit() {
+      manageSession.removeSession("userInfo");
+      this.$router.push("/Sign");
+    }
   }
 };
 </script>

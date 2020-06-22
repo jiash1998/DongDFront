@@ -29,9 +29,11 @@
 <script>
 import publicHead from "../components/publicHead";
 import publicFoot from "../components/publicFoot";
+//管理session
+import manageSession from "../jsUtil/manageSession.js";
 //引入接口
 import postApi from "../jsUtil/postRequest.js";
-import getDataApi from "../jsUtil/getRequest.js";
+import signinApi from "../jsUtil/getRequest.js";
 
 export default {
   name: "sign",
@@ -46,7 +48,7 @@ export default {
         password: ""
       },
       urlName: "/Register",
-      isOk: true,
+      isOk: true
     };
   },
   watch: {
@@ -61,40 +63,43 @@ export default {
       deep: true
     }
   },
+  // mounted() {
+  //   console.log(JSON.parse(sessionStorage.getItem("adminInfo")));
+  // },
   methods: {
     //登录提交
     signin() {
       // let data = this.signForm;
       let data = this.signForm;
-      console.log(data);
-      // this.$router.push({ path: "/controlUser" });
-      this.$router.push({ path: "/controlAdmin" });
-      // const newWin = this.$router.resolve({ name: "controlUser" });
-      // window.open(newWin.href, "_blank");
-      // postApi
+      manageSession.setSession("adminInfo", data);
+      this.$router.push({
+        path: "/controlAdmin"
+      });
+      //接口
+      // signinApi
       //   .signin(data)
       //   .then(res => {
+      //     //登录接口发送成功后
       //     console.log(res.data);
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-      //post类型 接口测试
-      // let data = "949";
-      // insertUserApi
-      //   .insertUser({values:data})
-      //   .then(res => {
-      //     console.log(res.data);
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-      //get类型 接口测试
-      // getDataApi
-      //   .getData()
-      //   .then(res => {
-      //     console.log("123");
-      //     console.log(res.data);
+      //     let info = res.data;
+      //     //根据返回信息判断
+      //     if (info) {
+      //       if (info.admin == "true") {
+      //         //session保存s管理员信息
+      //         manageSession.setSession("adminInfo", info);
+      //         this.$router.push({ path: "/controlAdmin", });
+      //       } else {
+      //         //session保存员工信息
+      //         manageSession.setSession("userInfo", info);
+      //         this.$router.push({ path: "/controlUser" });
+      //       }
+      //     } else {
+      //       this.$message({
+      //         message: "验证失败，重新登陆",
+      //         type: "error",
+      //         duration: 2000
+      //       });
+      //     }
       //   })
       //   .catch(err => {
       //     console.log(err);

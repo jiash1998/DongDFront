@@ -23,7 +23,7 @@
                 v-for="item in options_industry"
                 :key="item.value"
                 :label="item.label"
-                :value="item.value"
+                :value="item.label"
               ></el-option>
             </el-select>
           </el-form-item>
@@ -33,7 +33,7 @@
                 v-for="item in options_scale"
                 :key="item.value"
                 :label="item.label"
-                :value="item.value"
+                :value="item.label"
               ></el-option>
             </el-select>
           </el-form-item>
@@ -80,11 +80,13 @@
 </template>
 
 <script>
+import adminApi from "../../jsUtil/postRequest.js";
+import manageSession from "../../jsUtil/manageSession.js";
 export default {
   name: "adminOrgan",
   data() {
     return {
-      isCreate: true,
+      isCreate: "",
       //遮罩
       fullscreenLoading: false,
       organForm: {
@@ -203,17 +205,35 @@ export default {
         ).toUpperCase();
       }
       code += Math.round(Math.random() * 10000);
-      //   console.log(code);
       this.organForm.orgCode = code;
     }
+    //获取管理员信息
+    console.log(JSON.parse(sessionStorage.getItem("adminInfo")));
+    //根据用户名获取组织
+    this.isCreate = "HNYS1233";
+    // adminApi.getOrgan().then
   },
-  mounted() {},
   methods: {
+    //创建组织
     toCreate() {
-      this.fullscreenLoading = true;
-      setTimeout(() => {
-        this.fullscreenLoading = false;
-      }, 1000);
+      // this.fullscreenLoading = true;
+      // setTimeout(() => {
+      //   this.fullscreenLoading = false;
+      // }, 1000);
+      let data = this.organForm;
+      console.log(data);
+      this.isCreate = "HNYS1233";
+      // adminApi
+      //   .createOrgan(data)
+      //   .then(res => {
+      //     console.log(res.data);
+      //     if(res.data){
+      //       this.isCreate = !this.isCreate;
+      //     }
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
     }
   }
 };
