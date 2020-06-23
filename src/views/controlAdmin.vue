@@ -23,7 +23,7 @@
       </div>
       <div class="head-item3">
         <div class="item3-name">
-          <p>甲生_Jst</p>
+          <p>{{name}}</p>
         </div>
         <el-button type="primary" size="mini" @click="exit" plain>退出</el-button>
       </div>
@@ -43,6 +43,14 @@ export default {
   name: "controlAdmin",
   components: {
     publicFoot
+  },
+  data() {
+    return {
+      name:"Tom"
+    }
+  },
+  created() {
+    this.name = JSON.parse(sessionStorage.getItem("adminInfo")).username;
   },
   methods: {
     exit(){

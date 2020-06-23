@@ -57,11 +57,11 @@ export default {
   //管理员模块
   //创建组织
   createOrgan(data) {
-    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+    return interceptor(postString("/apis/createOrgan", methodsAll, data, headersAll));
   },
   //获取组织
   getOrgan(data) {
-    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+    return interceptor(postString("/apis/getOrganByName", methodsAll, data, headersAll));
   },
   //用户模块
   //加入组织

@@ -1,24 +1,24 @@
 <template>
   <div id="adminOrgan">
     <!-- 没有创建组织时 -->
-    <div class="organ-no" v-if="!isCreate">
+    <div class="organ-no" v-if="isCreate ==='none'">
       <el-card>
         <div slot="header">创建组织</div>
         <el-form :model="organForm" size="mini" label-position="left">
           <el-form-item label="组织名称" label-width="100px">
-            <el-input v-model="organForm.orgName" placeholder="输入完整组织名称"></el-input>
+            <el-input v-model="organForm.organName" placeholder="输入完整组织名称"></el-input>
           </el-form-item>
           <el-form-item label="团队号" label-width="100px">
-            <el-input type="text" v-model="organForm.orgCode" disabled></el-input>
+            <el-input type="text" v-model="organForm.organCode" disabled></el-input>
           </el-form-item>
           <el-form-item label="负责人" label-width="100px">
-            <el-input v-model="organForm.orgBoss" disabled></el-input>
+            <el-input v-model="organForm.organBoss" disabled></el-input>
           </el-form-item>
           <el-form-item label="联系方式" label-width="100px">
-            <el-input v-model="organForm.orgPhone" placeholder="输入联系方式"></el-input>
+            <el-input v-model="organForm.organPhone" placeholder="输入联系方式"></el-input>
           </el-form-item>
           <el-form-item label="所属行业" label-width="100px">
-            <el-select v-model="organForm.orgIndustry" clearable placeholder="请选择">
+            <el-select v-model="organForm.organIndustry" clearable placeholder="请选择">
               <el-option
                 v-for="item in options_industry"
                 :key="item.value"
@@ -28,7 +28,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="规模(人数)" label-width="100px">
-            <el-select v-model="organForm.orgScale" clearable placeholder="请选择">
+            <el-select v-model="organForm.organScale" clearable placeholder="请选择">
               <el-option
                 v-for="item in options_scale"
                 :key="item.value"
@@ -38,18 +38,13 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button
-              type="primary"
-              plain
-              v-loading.fullscreen.lock="fullscreenLoading"
-              @click="toCreate"
-            >创建</el-button>
+            <el-button type="primary" plain @click="toCreate">创建</el-button>
           </el-form-item>
         </el-form>
       </el-card>
     </div>
     <!-- 创建了组织后 -->
-    <div class="organ-yes" v-else>
+    <div class="organ-yes" v-if="isCreate !==''&&isCreate!='none'">
       <div class="yes-left">
         <el-menu default-active="1" background-color="#f4f6f8">
           <el-menu-item index="1">
@@ -87,15 +82,13 @@ export default {
   data() {
     return {
       isCreate: "",
-      //遮罩
-      fullscreenLoading: false,
       organForm: {
-        orgName: "",
-        orgCode: "",
-        orgScale: "",
-        orgIndustry: "",
-        orgBoss: "甲生_Jst",
-        orgPhone: ""
+        organName: "",
+        organCode: "",
+        organScale: "",
+        organIndustry: "",
+        organBoss: "Tom",
+        organPhone: ""
       },
       options_scale: [
         {
@@ -196,8 +189,12 @@ export default {
     };
   },
   created() {
+    //获取管理员信息
+    let adminInfo = JSON.parse(sessionStorage.getItem("adminInfo"));
+    console.log(adminInfo);
+    this.getOrganSelf(adminInfo.username);
     //生成公司唯一编码
-    if (!this.isCreate && !this.organForm.orgCode) {
+    if (this.isCreate == "") {
       let code = "";
       for (let i = 0; i < 4; i++) {
         code += String.fromCharCode(
@@ -205,35 +202,53 @@ export default {
         ).toUpperCase();
       }
       code += Math.round(Math.random() * 10000);
-      this.organForm.orgCode = code;
+      this.organForm.organCode = code;
     }
-    //获取管理员信息
-    console.log(JSON.parse(sessionStorage.getItem("adminInfo")));
     //根据用户名获取组织
-    this.isCreate = "HNYS1233";
-    // adminApi.getOrgan().then
+    this.organForm.organBoss = adminInfo.username;
   },
   methods: {
     //创建组织
     toCreate() {
-      // this.fullscreenLoading = true;
-      // setTimeout(() => {
-      //   this.fullscreenLoading = false;
-      // }, 1000);
       let data = this.organForm;
       console.log(data);
-      this.isCreate = "HNYS1233";
-      // adminApi
-      //   .createOrgan(data)
-      //   .then(res => {
-      //     console.log(res.data);
-      //     if(res.data){
-      //       this.isCreate = !this.isCreate;
-      //     }
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+      // this.isCreate = "HNYS1233";
+      adminApi
+        .createOrgan(data)
+        .then(res => {
+          console.log(res.data);
+          if (res.data.msg == "保存成功") {
+            this.isCreate = res.data.value.organCode;
+          } else {
+            this.$message({
+              message: "创建失败",
+              type: "error",
+              duration: 2000
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    //凭借管理员名称取组织
+    getOrganSelf(data) {
+      let obj = {
+        username: data
+      };
+      adminApi
+        .getOrgan(obj)
+        .then(res => {
+          console.log(res.data);
+          if (res.data.value == null) {
+            this.isCreate = "none";
+          } else {
+            this.isCreate = res.data.value.organCode;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

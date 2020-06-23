@@ -61,8 +61,8 @@ export default {
   methods: {
     toReg() {
       let data = this.regForm;
-      console.log(data);
-       this.$router.push({ path: "/Sign" });
+      // console.log(data);
+      //  this.$router.push({ path: "/Sign" });
       postApi
         .register(data)
         .then(res => {

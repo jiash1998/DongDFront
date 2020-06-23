@@ -76,54 +76,22 @@ export default {
       // this.$router.push({
       //   path: "/controlAdmin"
       // });
-      // this.axios
-      //   .post("http://localhost:8080/apis/signin", qs.stringify(data), {
-      //     headers: {
-      //       "Content-Type": "application/x-www-form-urlencoded"
-      //     }
-      //   })
-      //   .then(res => {
-      //     //登录接口发送成功后
-      //     console.log(res.data);
-      //     let info = res.data;
-      //     //根据返回信息判断
-      //     if (info) {
-      //       if (info.admin == "true") {
-      //         //session保存s管理员信息
-      //         manageSession.setSession("adminInfo", info);
-      //         this.$router.push({ path: "/controlAdmin" });
-      //       } else {
-      //         //session保存员工信息
-      //         manageSession.setSession("userInfo", info);
-      //         this.$router.push({ path: "/controlUser" });
-      //       }
-      //     } else {
-      //       this.$message({
-      //         message: "验证失败，重新登陆",
-      //         type: "error",
-      //         duration: 2000
-      //       });
-      //     }
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
       //接口
       postApi
         .signin(data)
         .then(res => {
           //登录接口发送成功后
-          console.log(res.data);
           let info = res.data;
+          console.log(info);
           //根据返回信息判断
-          if (info) {
-            if (info.admin == "true") {
+          if (info.msg !== "登录失败") {
+            if (info.value.admin == "true") {
               //session保存s管理员信息
-              manageSession.setSession("adminInfo", info);
+              manageSession.setSession("adminInfo", info.value);
               this.$router.push({ path: "/controlAdmin" });
             } else {
               //session保存员工信息
-              manageSession.setSession("userInfo", info);
+              manageSession.setSession("userInfo", info.value);
               this.$router.push({ path: "/controlUser" });
             }
           } else {
