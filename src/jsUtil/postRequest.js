@@ -69,6 +69,12 @@ export default {
       postString("/apis/getOrganByName", methodsAll, data, headersAll)
     );
   },
+  //根据公司名称获取员工
+  getAllUser(data) {
+    return interceptor(
+      postString("/apis/allOrganUser", methodsAll, data, headersAll)
+    );
+  },
   //用户模块
   //加入组织
   addOrgan(data) {

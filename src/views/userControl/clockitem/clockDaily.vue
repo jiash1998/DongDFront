@@ -71,12 +71,20 @@ export default {
       //打卡计数
       clockNum: 0,
       //时间线展示数组
-      activities: []
+      activities: [],
+      //打卡提交
+      clockObj:{
+        username:"",
+        organName:"",
+        organCode:"",
+        todayStart:"",
+        todayEnd:"",
+        isEnd:""
+      }
     };
   },
   methods: {
     clock_up() {
-      
       this.isClock = false;
       this.clockNum++;
       this.pushActivity(this.clockUp, this.iconCheck, this.colorSuc);
