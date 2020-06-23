@@ -46,7 +46,9 @@ export default {
   //公共模块
   //登录接口
   signin(data) {
-    return interceptor(postString("/apis/signin", methodsAll, data, headersAll));
+    return interceptor(
+      postString("/apis/signin", methodsAll, data, headersAll)
+    );
   },
   //注册接口
   register(data) {
@@ -57,16 +59,28 @@ export default {
   //管理员模块
   //创建组织
   createOrgan(data) {
-    return interceptor(postString("/apis/createOrgan", methodsAll, data, headersAll));
+    return interceptor(
+      postString("/apis/createOrgan", methodsAll, data, headersAll)
+    );
   },
   //获取组织
   getOrgan(data) {
-    return interceptor(postString("/apis/getOrganByName", methodsAll, data, headersAll));
+    return interceptor(
+      postString("/apis/getOrganByName", methodsAll, data, headersAll)
+    );
   },
   //用户模块
   //加入组织
   addOrgan(data) {
-    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+    return interceptor(
+      postString("/apis/addOrgan", methodsAll, data, headersAll)
+    );
+  },
+  //获取个人信息
+  getInfo(data) {
+    return interceptor(
+      postString("/apis/getInfoSelf", methodsAll, data, headersAll)
+    );
   },
   //每日打卡
   clockin(data) {

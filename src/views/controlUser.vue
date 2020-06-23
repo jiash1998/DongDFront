@@ -51,7 +51,7 @@ export default {
     };
   },
   created() {
-    // this.username = JSON.parse(sessionStorage.getItem("userInfo")).username;
+    this.username = JSON.parse(sessionStorage.getItem("userInfo")).username;
   },
   methods: {
     exit() {

@@ -27,6 +27,6 @@ export default {
   //用户模块
   //获取所有组织
   getAllOrgan() {
-    return interceptor(getString("/apis/***", methodAll));
+    return interceptor(getString("/apis/getAllOrgan", methodAll));
   },
 };

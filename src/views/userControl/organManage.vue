@@ -3,9 +3,14 @@
     <div class="organ-body">
       <div class="body-left">
         <div class="left-item1">
-          <el-form :model="selForm" ref="organForm" size="small">
+          <el-form :model="selForm" ref="organForm" @submit.native.prevent size="small">
             <el-form-item label>
-              <el-input v-model="selForm.organName" prefix-icon="el-icon-search" placeholder="搜索组织"></el-input>
+              <el-input
+                v-model="selForm.organName"
+                @input="findOrgan"
+                prefix-icon="el-icon-search"
+                placeholder="搜索组织"
+              ></el-input>
             </el-form-item>
           </el-form>
         </div>
@@ -13,21 +18,19 @@
           <p id="item2-p">组织架构</p>
         </div>
         <!-- 搜索结果 无 -->
-        <div class="left-item3-no" v-if="orgFlag">
+        <div class="left-item3-no" v-if="!viewArr.length">
           <img src="../../assets/images/orgNull2.png" />
         </div>
         <!-- 搜索结果 有 -->
-        <div class="left-item3-yes">
-          <h1>123</h1>
-          <h1>123</h1>
-          <h1>123</h1>
-          <h1>123</h1>
-          <h1>123</h1>
-          <h1>123</h1>
-          <h1>123</h1>
-          <h1>123</h1>
-          <h1>123</h1>
-          <h1>123</h1>
+        <div class="left-item3-yes" v-else>
+          <div
+            v-for="(item,index) in viewArr"
+            :key="index"
+            :class="['yes-div',index == selInd?'yes-div-click':'']"
+            @click="clickItem(index)"
+          >
+            <p>{{item.organName}}</p>
+          </div>
         </div>
       </div>
       <div class="body-right">
@@ -39,8 +42,8 @@
         <!-- 有组织时 -->
         <div class="right-item" v-else>
           <div class="item-title">
-            <p id="title-p1">滁州市源分资源回收系统</p>
-            <el-tag type="warning" hit size="mini">待加入</el-tag>
+            <p id="title-p1">{{viewObj.organName}}</p>
+            <el-tag type="warning" hit size="mini">带加入</el-tag>
           </div>
           <div class="item-cont1">
             <div class="cont1-head head-add">
@@ -50,7 +53,7 @@
             <div class="cont1-oper">
               <p class="public-add-p2">
                 组织人数：
-                <span>100人</span>
+                <span>{{viewObj.organScale}}</span>
               </p>
             </div>
           </div>
@@ -60,8 +63,8 @@
               <p class="public-add-p1">管理人员</p>
             </div>
             <div class="cont2-oper" style="padding:10px 0;">
-              <p class="public-add-p2">管理人员：顾乐</p>
-              <p class="public-add-p2">联系方式：17856006144</p>
+              <p class="public-add-p2">管理人员：{{viewObj.organBoss}}</p>
+              <p class="public-add-p2">联系方式：{{viewObj.organPhone}}</p>
             </div>
           </div>
           <div class="item-foot">
@@ -91,54 +94,105 @@ export default {
         organName: ""
       },
       //切换状态
-      orgFlag: false,
-      organArr: [
-        {
-          organName: "滁州市1231231231"
-        },
-        {
-          organName: "滁州市zczxcxzcz"
-        },
-        {
-          organName: "adas滁州市1231231231"
-        }
-      ]
+      orgFlag: null,
+      selInd: null,
+      organArr: [],
+      viewArr: [],
+      viewObj: {}
     };
   },
   created() {
     //加载页面时获取所有商家
-    // getAllOrganApi
-    //   .getAllOrgan()
-    //   .then(res => {
-    //     console.log(res);
-    //     for (const i of res.data) {
-    //         this.organArr.push(i);
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    this.getAll();
+    //
+    this.getInfo(JSON.parse(sessionStorage.getItem("userInfo")).username);
   },
   methods: {
+    //查找组织
+    findOrgan(val) {
+      this.viewArr = [];
+      console.log(val);
+      if (val) {
+        for (const i of this.organArr) {
+          if (i.organName.indexOf(val) !== -1) {
+            this.viewArr.push(i);
+          }
+        }
+      } else {
+        console.log("empty");
+        this.orgFlag = true;
+        this.selInd = null;
+      }
+    },
+    //选择
+    clickItem(val) {
+      this.selInd = val;
+      this.viewObj = this.organArr[val];
+      this.orgFlag = false;
+    },
+    //获取所有组织
+    getAll() {
+      getAllOrganApi
+        .getAllOrgan()
+        .then(res => {
+          console.log(res.data.value);
+          for (const i of res.data.value) {
+            this.organArr.push(i);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    //获取个人信息
+    getInfo(data) {
+      let obj={username:data}
+      postApi
+        .getInfo(obj)
+        .then(res => {
+          console.log(res.data.value);
+          let info = res.data.value;
+          if(info.organName != "none"&&info.organCode!="none"){
+            this.orgFlag = false;
+            this.viewObj = info.organ;
+          }else{
+            this.orgFlag = true;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     //加入组织
     addOrgan() {
       let data = this.selForm.organName;
-      // let obj = { username: JSON.parse(sessionStorage.getItem("userInfo")) };
-      // console.log(data);
-      // for (const i of this.organArr) {
-      //   if (i.organName == data) {
-      //     obj.organName = i.organName;
-      //     obj.organCode = i.organCode;
-      //   }
-      // }
-      // postApi
-      //   .addOrgan(obj)
-      //   .then(res => {
-      //     console.log(res.data);
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
+      let obj = {
+        username: JSON.parse(sessionStorage.getItem("userInfo")).username,
+        organName: this.viewObj.organName,
+        organCode: this.viewObj.organCode
+      };
+      console.log(obj);
+      postApi
+        .addOrgan(obj)
+        .then(res => {
+          console.log(res.data);
+          if (res.data.value.nModified !== 0) {
+            this.$message({
+              message: "加入成功",
+              type: "success",
+              duration: 1500
+            });
+          } else {
+            this.$message({
+              message: "加入失败",
+              type: "error",
+              duration: 1500
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

@@ -55,6 +55,30 @@ $baseHeight: 70vh;
         // background-color: pink;
         overflow: auto;
         scrollbar-color: transparent transparent;
+
+        .yes-div {
+          // background-color: pink;
+          width: 80%;
+          margin: 0 auto;
+          padding: 5px 0;
+          border-bottom: 1px dashed gray;
+
+          &:hover {
+            color: $baseColor;
+            border-bottom: 1px solid $baseColor;
+          }
+          p {
+            font-size: 0.9em;
+          }
+        }
+
+        .yes-div-click {
+          width: 80%;
+          margin: 0 auto;
+          padding: 5px 0;
+          color: $baseColor;
+          border-bottom: 1px solid $baseColor;
+        }
       }
     }
 
