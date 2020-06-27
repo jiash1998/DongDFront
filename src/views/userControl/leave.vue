@@ -10,6 +10,8 @@
             range-separator="至"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
+            format="yyyy 年 MM 月 dd 日"
+            value-format="yyyy-MM-dd"
           ></el-date-picker>
         </el-form-item>
         <el-form-item label="类型" label-width="80px">
@@ -28,15 +30,13 @@
           <el-input v-model="leaveForm.detail" type="textarea" placeholder="可说明详情"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">提交假条</el-button>
+          <el-button type="primary" @click="toLea">提交假条</el-button>
         </el-form-item>
       </el-form>
       <div class="leave-flag">
         <p id="flag-p">解释</p>
         <ul>
-          <li v-for="(item, index) in flag" :key="index">
-             {{(index+1)}}、{{item.content}}
-          </li>
+          <li v-for="(item, index) in flag" :key="index">{{(index+1)}}、{{item.content}}</li>
         </ul>
       </div>
     </el-card>
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import postApi from "../../jsUtil/postRequest";
 export default {
   name: "leave",
   data() {
@@ -62,8 +63,26 @@ export default {
           content:
             "如果遇到紧急情况，可选择加急处理，每月加急次数有效，请酌情选择！"
         }
-      ]
+      ],
+      username: "",
+      organCode: ""
     };
+  },
+  created() {
+    this.username = JSON.parse(sessionStorage.getItem("userInfo")).username;
+    this.organCode = JSON.parse(sessionStorage.getItem("userInfo")).organCode;
+  },
+  methods: {
+    //提交请假
+    async toLea() {
+      let obj = this.leaveForm;
+      obj.username = this.username;
+      obj.organCode = this.organCode;
+      obj.status = "false";
+      console.log(obj);
+      let res = await postApi.leave(obj);
+      console.log(res.data);
+    }
   }
 };
 </script>

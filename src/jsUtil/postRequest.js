@@ -92,4 +92,14 @@ export default {
   clockin(data) {
     return interceptor(postString("/apis/***", methodsAll, data, headersAll));
   },
+  //请假
+  leave(data) {
+    return interceptor(postString("/apis/leave", methodsAll, data, headersAll));
+  },
+  //获取自己的请假
+  getLeaves(data) {
+    return interceptor(
+      postString("/apis/getLeaves", methodsAll, data, headersAll)
+    );
+  },
 };

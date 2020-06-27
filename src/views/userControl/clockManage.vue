@@ -15,6 +15,12 @@
               <span>打卡历史</span>
             </router-link>
           </el-menu-item>
+          <el-menu-item index="3">
+            <router-link to="/controlUser/clockManage/leaveHistory" tag="div">
+              <i class="el-icon-date"></i>
+              <span>假条</span>
+            </router-link>
+          </el-menu-item>
         </el-menu>
       </div>
       <div class="body-right">

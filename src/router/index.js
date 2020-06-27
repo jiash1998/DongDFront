@@ -28,6 +28,8 @@ import leave from "../views/userControl/leave.vue";
 import clockManage from "../views/userControl/clockManage.vue";
 import clockDaily from "../views/userControl/clockitem/clockDaily.vue";
 import clockHistory from "../views/userControl/clockitem/clockHist.vue";
+import leaveHistory from "../views/userControl/clockitem/leaveHist.vue";
+
 
 Vue.use(VueRouter);
 
@@ -111,6 +113,11 @@ const routes = [
             name: "clockHistory",
             component: clockHistory,
           },
+          {
+            path: "/controlUser/clockManage/leaveHistory",
+            name: "leaveHistory",
+            component: leaveHistory,
+          },
         ],
       },
       {
@@ -136,8 +143,8 @@ const routes = [
         component: adminOrgan,
         children: [
           {
-            path:"/controlAdmin/adminOrgan",
-            redirect: "/controlAdmin/adminOrgan/itemBase"
+            path: "/controlAdmin/adminOrgan",
+            redirect: "/controlAdmin/adminOrgan/itemBase",
           },
           {
             path: "/controlAdmin/adminOrgan/itemBase",
