@@ -75,6 +75,12 @@ export default {
       postString("/apis/allOrganUser", methodsAll, data, headersAll)
     );
   },
+  //获取组织下员工假条
+  getLeaveInfo(data){
+  return interceptor(
+      postString("/apis/getLeaveInfo", methodsAll, data, headersAll)
+    );
+  },
   //用户模块
   //加入组织
   addOrgan(data) {
@@ -90,7 +96,7 @@ export default {
   },
   //每日打卡
   clockin(data) {
-    return interceptor(postString("/apis/***", methodsAll, data, headersAll));
+    return interceptor(postString("/apis/clockin", methodsAll, data, headersAll));
   },
   //请假
   leave(data) {

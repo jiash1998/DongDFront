@@ -52,6 +52,7 @@
 <script>
 //时间转转换字符串
 import times from "../../../jsUtil/getTimes.js";
+import postApi from "../../../jsUtil/postRequest";
 export default {
   name: "clockDaily",
   data() {
@@ -73,23 +74,29 @@ export default {
       //时间线展示数组
       activities: [],
       //打卡提交
-      clockObj:{
-        username:"",
-        organName:"",
-        organCode:"",
-        todayStart:"",
-        todayEnd:"",
-        isEnd:""
+      clockObj: {
+        username: "",
+        organCode: "",
+        todayStart: "",
+        todayEnd: "",
+        isEnd: "false"
       }
     };
   },
+  created() {
+    let data = JSON.parse(sessionStorage.getItem("userInfo"));
+    this.clockObj.username = data.username;
+    this.clockObj.organCode = data.organCode;
+  },
   methods: {
-    clock_up() {
+    async clock_up() {
       this.isClock = false;
       this.clockNum++;
       this.pushActivity(this.clockUp, this.iconCheck, this.colorSuc);
       this.pushActivity(this.clockWait, this.iconWait, this.colorWait);
-      console.log(times.calcTimes());
+      this.clockObj.todayStart = times.calcTimes();
+      let res = await postApi.clockin(this.clockObj);
+      console.log(res.data);
     },
     clock_down() {
       this.isClock = false;
