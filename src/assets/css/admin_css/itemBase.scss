@@ -1,0 +1,49 @@
+#itemBase {
+  .base-body {
+    // background-color: pink;
+    width: 94%;
+    height: 65vh;
+    margin: 2vh auto;
+    .organ-name {
+      font-size: 1.5em;
+    }
+
+    .organ-body {
+      .body-item1 {
+        margin: 20px 0 0;
+        border-bottom: 1px solid gainsboro;
+        padding-bottom: 15px;
+        .item1-head {
+          display: flex;
+          align-items: center;
+          img {
+            width: 25px;
+            margin: 10px 10px 10px 0;
+          }
+        }
+
+        .item1-oper {
+          font-size: 0.9em;
+        }
+      }
+
+      .body-item2 {
+        margin: 15px 0 0 0;
+        border-bottom: 1px solid gainsboro;
+        padding-bottom: 15px;
+        .item2-head {
+          display: flex;
+          align-items: center;
+          img {
+            width: 25px;
+            margin: 10px 10px 10px 0;
+          }
+        }
+
+        .item2-oper {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+}

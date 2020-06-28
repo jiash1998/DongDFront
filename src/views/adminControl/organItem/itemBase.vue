@@ -1,6 +1,34 @@
 <template>
   <div id="itemBase" v-loading="fullscreenLoading">
-    <div class="base-body">{{organ}}</div>
+    <div class="base-body">
+      <div class="organ-name">
+        <p>{{organ.organName}}</p>
+      </div>
+      <div class="organ-body">
+        <div class="body-item1">
+          <div class="item1-head">
+            <img class="item-img" src="../../../assets/images/baseInfo2.png" />
+            <p class="public-add-p1">基本信息</p>
+          </div>
+          <div class="item1-oper">
+            <p class="public-add-p2">
+              组织人数：
+              <span>{{organ.organScale}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="body-item2">
+          <div class="item2-head">
+            <img src="../../../assets/images/manage2.png" />
+            <p class="public-add-p1">管理人员</p>
+          </div>
+          <div class="item2-oper">
+            <p class="public-add-p2">管理人员：{{organ.organBoss}}</p>
+            <p class="public-add-p2">联系方式：{{organ.organPhone}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -52,4 +80,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../assets/css/admin_css/itemBase.scss";
 </style>

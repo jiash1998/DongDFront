@@ -56,6 +56,18 @@ export default {
       postString("/apis/register", methodsAll, data, headersAll)
     );
   },
+  //修改
+  modify(data) {
+    return interceptor(
+      postString("/apis/modify", methodsAll, data, headersAll)
+    );
+  },
+  //获取个人信息
+  getInfo(data) {
+    return interceptor(
+      postString("/apis/getInfoSelf", methodsAll, data, headersAll)
+    );
+  },
   //管理员模块
   //创建组织
   createOrgan(data) {
@@ -76,9 +88,21 @@ export default {
     );
   },
   //获取组织下员工假条
-  getLeaveInfo(data){
-  return interceptor(
+  getLeaveInfo(data) {
+    return interceptor(
       postString("/apis/getLeaveInfo", methodsAll, data, headersAll)
+    );
+  },
+  //获取员工打卡情况
+  getClockInfo(data) {
+    return interceptor(
+      postString("/apis/getClockInfo", methodsAll, data, headersAll)
+    );
+  },
+  //移除团队成员
+  removeUser(data) {
+    return interceptor(
+      postString("/apis/removeOrganUser", methodsAll, data, headersAll)
     );
   },
   //用户模块
@@ -96,7 +120,9 @@ export default {
   },
   //每日打卡
   clockin(data) {
-    return interceptor(postString("/apis/clockin", methodsAll, data, headersAll));
+    return interceptor(
+      postString("/apis/clockin", methodsAll, data, headersAll)
+    );
   },
   //请假
   leave(data) {

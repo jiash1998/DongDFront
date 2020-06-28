@@ -16,10 +16,9 @@ import adminOrgan from "../views/adminControl/adminOrgan.vue";
 import itemBase from "../views/adminControl/organItem/itemBase.vue";
 import itemArch from "../views/adminControl/organItem/itemArch.vue";
 import itemMore from "../views/adminControl/organItem/itemMore.vue";
-
 import adminClock from "../views/adminControl/adminClock.vue";
 import adminLeave from "../views/adminControl/adminLeave.vue";
-
+import adminModify from "../views/adminControl/adminModify.vue";
 
 //用户
 import controlUser from "../views/controlUser.vue";
@@ -29,7 +28,7 @@ import clockManage from "../views/userControl/clockManage.vue";
 import clockDaily from "../views/userControl/clockitem/clockDaily.vue";
 import clockHistory from "../views/userControl/clockitem/clockHist.vue";
 import leaveHistory from "../views/userControl/clockitem/leaveHist.vue";
-
+import userModify from "../views/userControl/userModify.vue";
 
 Vue.use(VueRouter);
 
@@ -125,6 +124,11 @@ const routes = [
         name: "leave",
         component: leave,
       },
+      {
+        path: "/controlUser/userModify",
+        name: "userModify",
+        component: userModify,
+      },
     ],
   },
   //管理员
@@ -172,6 +176,11 @@ const routes = [
         path: "/controlAdmin/adminLeave",
         name: "adminLeave",
         component: adminLeave,
+      },
+      {
+        path: "/controlAdmin/adminModify",
+        name: "adminModify",
+        component: adminModify,
       },
     ],
   },

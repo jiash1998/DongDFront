@@ -1,17 +1,30 @@
 <template>
   <div id="adminLeave">
     <div class="leave-body">
-        <el-card>
-            <div slot="header">员工假条</div>
-            <el-table :data="leaveArr" border>
-              <el-table-column label="员工姓名" prop="username"></el-table-column>
-              <el-table-column label="请假时间" prop="time"></el-table-column>
-              <el-table-column label="请假类型" prop="type"></el-table-column>
-              <el-table-column label="详情说明" prop="detail"></el-table-column>
-              <el-table-column label="假条状态" prop="status"></el-table-column>
-              <el-table-column label="操作"></el-table-column>
-            </el-table>
-        </el-card>
+      <el-card>
+        <div slot="header">员工假条</div>
+        <el-table size="small" :data="leaveArr.slice((current-1)*pageSizes,current*pageSizes)" border>
+          <el-table-column label="员工姓名" prop="username"></el-table-column>
+          <el-table-column label="请假时间" prop="time"></el-table-column>
+          <el-table-column label="请假类型" prop="type"></el-table-column>
+          <el-table-column label="详情说明" prop="detail"></el-table-column>
+          <el-table-column label="假条状态" prop="status"></el-table-column>
+          <el-table-column label="操作">
+            <template slot-scope="scope">
+              <el-button type="primary" plain size="small" @click="toReplyLeave(scope.row)">批准</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-pagination
+          :total="leaveArr.length"
+          :current-page="1"
+          :page-size="6"
+          :page-sizes="[3,6,9]"
+          @current-change="handleCurrentChange"
+          @size-change="handleSizeChange"
+          layout="total,sizes, prev, pager, next,jumper"
+        ></el-pagination>
+      </el-card>
     </div>
   </div>
 </template>
@@ -23,7 +36,9 @@ export default {
   data() {
     return {
       leaveArr: [],
-      obj: {}
+      obj: {},
+      pageSizes: 6,
+      current: 1
     };
   },
   created() {
@@ -36,9 +51,20 @@ export default {
     async getUserLea(data) {
       let res = await postApi.getLeaveInfo(data);
       console.log(res.data);
-      if(res.data.value.length > 0){
-          this.leaveArr = res.data.value;
+      if (res.data.value.length > 0) {
+        this.leaveArr = res.data.value;
       }
+    },
+    //回复请假
+    toReplyLeave(val) {
+      console.log(val);
+    },
+    //分页
+    handleSizeChange(val) {
+      this.pageSizes = val;
+    },
+    handleCurrentChange(val) {
+      this.current = val;
     }
   }
 };

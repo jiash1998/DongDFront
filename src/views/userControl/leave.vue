@@ -79,7 +79,9 @@ export default {
       obj.username = this.username;
       obj.organCode = this.organCode;
       obj.status = "false";
+      obj.time = obj.time.join("-");
       console.log(obj);
+      
       let res = await postApi.leave(obj);
       console.log(res.data);
     }

@@ -17,7 +17,7 @@
             <router-link to="/controlAdmin/adminLeave" tag="div">假条批阅</router-link>
           </el-menu-item>
           <el-menu-item index="4">
-            <router-link to="/controlAdmin" tag="div">设置</router-link>
+            <router-link to="/controlAdmin/adminModify" tag="div">设置</router-link>
           </el-menu-item>
         </el-menu>
       </div>

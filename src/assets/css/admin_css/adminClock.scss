@@ -1,0 +1,16 @@
+#adminClock{
+    width: 100%;
+    .clock-body{
+        .el-card {
+            width: 94%;
+            margin: 0 auto;
+
+            .el-pagination {
+                width: 90%;
+                margin: 10px auto 0;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}

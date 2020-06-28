@@ -1,8 +1,16 @@
-#adminLeave{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    .leave-body{
-        width: 80%;
+#adminLeave {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .leave-body {
+    width: 80%;
+    .el-card {
+      .el-pagination {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        margin:15px auto 0;
+      }
     }
+  }
 }
