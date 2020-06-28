@@ -38,7 +38,7 @@ export default {
     return {
       leaveArr: [],
       current: 1,
-      pageSizes: 3
+      pageSizes: 6
     };
   },
   created() {

@@ -43,7 +43,8 @@
         <div class="right-item" v-else>
           <div class="item-title">
             <p id="title-p1">{{viewObj.organName}}</p>
-            <el-tag type="warning" hit size="mini">带加入</el-tag>
+            <el-tag type="success" hit size="mini" v-if="viewObj.organCode">已加入</el-tag>
+            <el-tag type="warning" hit size="mini" v-else>待加入</el-tag>
           </div>
           <div class="item-cont1">
             <div class="cont1-head head-add">

@@ -27,6 +27,15 @@
             <p class="public-add-p2">联系方式：{{organ.organPhone}}</p>
           </div>
         </div>
+        <div class="body-item3">
+          <div class="item2-head">
+            <img src="../../../assets/images/type2.png" />
+            <p class="public-add-p1">公司类别</p>
+          </div>
+          <div class="item2-oper">
+            <p class="public-add-p2">类别：{{organ.organIndustry}}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -50,7 +59,7 @@ export default {
     setTimeout(() => {
       this.fullscreenLoading = false;
       this.getOrganSelf(adminInfo.username);
-    }, 800);
+    }, 500);
 
     console.log(adminInfo);
   },

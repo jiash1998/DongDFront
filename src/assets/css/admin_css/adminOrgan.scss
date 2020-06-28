@@ -26,14 +26,14 @@ $baseHeight:70vh;
         display: flex;
         .yes-left{
             width: 260px;
-            height: $baseHeight;
+            min-height: $baseHeight;
             border-radius: 5px 0 0px 5px;
             background-color: #f4f6f8;
         }
 
         .yes-right {
             width: calc(100% - 260px);
-            height: $baseHeight;
+            min-height: $baseHeight;
             background-color: #fff;
         }
     }

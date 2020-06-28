@@ -87,6 +87,12 @@ export default {
       postString("/apis/allOrganUser", methodsAll, data, headersAll)
     );
   },
+  //批准假条
+  replayLeave(data) {
+    return interceptor(
+      postString("/apis/replayLeave", methodsAll, data, headersAll)
+    );
+  },
   //获取组织下员工假条
   getLeaveInfo(data) {
     return interceptor(
