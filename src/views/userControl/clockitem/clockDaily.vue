@@ -53,6 +53,8 @@
 //时间转转换字符串
 import times from "../../../jsUtil/getTimes.js";
 import postApi from "../../../jsUtil/postRequest";
+import conver from "../../../jsUtil/converStr";
+import manageSession from "../../../jsUtil/manageSession";
 export default {
   name: "clockDaily",
   data() {
@@ -77,44 +79,114 @@ export default {
       clockObj: {
         username: "",
         organCode: "",
-        todayStart: "",
-        todayEnd: "",
+        todayStartDate: "",
+        todayStartTime: "",
+        todayEndDate: "",
+        todayEndTime: "",
         isEnd: "false"
-      }
+      },
+      //打卡对象2
+      clockedObj: {}
     };
   },
   created() {
     let data = JSON.parse(sessionStorage.getItem("userInfo"));
     this.clockObj.username = data.username;
     this.clockObj.organCode = data.organCode;
+    this.getToday();
   },
   methods: {
+    //打卡上班
     async clock_up() {
       this.isClock = false;
       this.clockNum++;
-      this.pushActivity(this.clockUp, this.iconCheck, this.colorSuc);
-      this.pushActivity(this.clockWait, this.iconWait, this.colorWait);
-      this.clockObj.todayStart = times.calcTimes();
+      this.pushActivity(
+        this.clockUp,
+        this.iconCheck,
+        times.calcTimes().Dates,
+        this.colorSuc
+      );
+      this.pushActivity(
+        this.clockWait,
+        this.iconWait,
+        times.calcTimes().Dates,
+        this.colorWait
+      );
+      this.clockObj.todayStartDate = times.calcTimes().Dates;
+      this.clockObj.todayStartTime = times.calcTimes().times;
       let res = await postApi.clockin(this.clockObj);
-      console.log(res.data);
+      console.log(res.data.value);
     },
-    clock_down() {
+    //打卡下班
+    async clock_down() {
       this.isClock = false;
       this.clockNum++;
 
       if (this.clockNum > 2) {
         console.log("别点了！！！");
       } else {
+        //获取local里保存的对象，补充上下班时间
+        let clock = this.clockedObj;
+        clock.todayEndDate = times.calcTimes().Dates;
+        clock.todayEndTime = times.calcTimes().times;
+        let res = await postApi.clockin(clock);
+        console.log(res.data);
+
         this.activities.pop();
         this.clockDown = "打卡结束";
-        this.pushActivity(this.clockDown, this.iconClose, this.colorError);
+        this.pushActivity(
+          this.clockDown,
+          this.iconClose,
+          times.calcTimes().Dates + " " + times.calcTimes().times,
+          this.colorError
+        );
+      }
+    },
+    //获取当日打卡
+    async getToday() {
+      let obj = { username: this.clockObj.username };
+      let res = await postApi.getClockToday(obj);
+      for (const i of res.data.value) {
+        if (i.todayStartDate === times.calcTimes().Dates) {
+          this.clockedObj = i;
+        } else {
+          this.clockedObj = null;
+        }
+      }
+      console.log(this.clockedObj.todayStartDate);
+
+      if (this.clockedObj.todayStartDate !== undefined) {
+        this.isClock = false;
+        this.pushActivity(
+          this.clockUp,
+          this.iconCheck,
+          this.clockedObj.todayStartDate + " " + this.clockedObj.todayStartTime,
+          this.colorSuc
+        );
+        this.pushActivity(
+          this.clockWait,
+          this.iconWait,
+          times.calcTimes().Dates + " " + times.calcTimes().times,
+          this.colorWait
+        );
+      }
+      if (this.clockedObj.isEnd == "true") {
+        this.clockNum = 100;
+        this.activities.pop();
+        this.clockDown = "打卡结束";
+        this.pushActivity(
+          this.clockDown,
+          this.iconClose,
+          times.calcTimes().Dates + " " + times.calcTimes().times,
+          this.colorError
+        );
       }
     },
     //时间线操作
-    pushActivity(text, icon, color) {
+    pushActivity(text, icon, time, color) {
       let obj = {
         content: text,
-        timestamp: times.calcTimes(),
+        timestamp: time,
         icon: icon,
         color: color,
         size: "larger"

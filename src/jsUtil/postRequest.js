@@ -130,6 +130,12 @@ export default {
       postString("/apis/clockin", methodsAll, data, headersAll)
     );
   },
+  //获取当日打卡信息
+  getClockToday(data) {
+    return interceptor(
+      postString("/apis/getClockToday", methodsAll, data, headersAll)
+    );
+  },
   //请假
   leave(data) {
     return interceptor(postString("/apis/leave", methodsAll, data, headersAll));

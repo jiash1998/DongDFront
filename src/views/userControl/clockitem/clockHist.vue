@@ -69,96 +69,71 @@ export default {
           leaType: "none"
         },
         {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
-          flag: "yes",
-          isLeave: "no",
-          leaType: "none"
-        }, {
-          times: "2020-06-18",
+          times: "2020-06-19",
           flag: "yes",
           isLeave: "no",
           leaType: "none"
         },
+        {
+          times: "2020-06-20",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-21",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-22",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-23",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-24",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-25",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-26",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-27",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-28",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        },
+        {
+          times: "2020-06-29",
+          flag: "yes",
+          isLeave: "no",
+          leaType: "none"
+        }
       ],
       current: 1,
       pageSizes: 7

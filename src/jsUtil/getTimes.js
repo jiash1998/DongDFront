@@ -1,3 +1,4 @@
+let Dates = "";
 let times = "";
 let arr = [
   "01",
@@ -25,7 +26,8 @@ export default {
     let hour = new Date().getHours();
     let minutes = new Date().getMinutes();
 
-    times = `${year}-${month}-${date} ${hour}:${minutes}`;
-    return times;
+    Dates = `${year}-${month}-${date}`;
+    times = `${hour}:${minutes}`;
+    return { Dates, times };
   },
 };

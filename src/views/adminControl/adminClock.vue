@@ -9,8 +9,10 @@
           size="small"
         >
           <el-table-column label="员工姓名" prop="username"></el-table-column>
-          <el-table-column label="上班时间" prop="todayStart"></el-table-column>
-          <el-table-column label="下班时间" prop="rodayEnd"></el-table-column>
+          <el-table-column label="上班日期" prop="todayStartDate"></el-table-column>
+          <el-table-column label="上班时间" prop="todayStartTime"></el-table-column>
+          <el-table-column label="下班日期" prop="todayEndDate"></el-table-column>
+          <el-table-column label="下班时间" prop="todayEndTime"></el-table-column>
         </el-table>
         <el-pagination
           :total="clockArr.length"
